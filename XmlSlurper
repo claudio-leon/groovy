@@ -1,0 +1,2 @@
+def root = new XmlSlurper().parse(reader)
+def orderNo = root.Header.OrderNumber
