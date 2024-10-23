@@ -1,0 +1,17 @@
+import com.sap.gateway.ip.core.customdev.util.Message;
+import java.util.HashMap;
+def Message processData(Message message) {
+    map = message.getProperties();
+    def zID = map.get("ID");
+    def indicator;
+    if(zID == '')
+    {
+        indicator = 'false';
+    }
+    else
+    {
+        indicator = 'true';
+    }
+    message.setProperty("Result", indicator);
+    return message;
+}
