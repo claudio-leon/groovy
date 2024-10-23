@@ -1,0 +1,10 @@
+import com.sap.gateway.ip.core.customdev.util.Message;
+import java.util.HashMap;
+import java.lang.*;
+import com.sap.it.api.mapping.*;
+def Message processData(Message message)
+{
+    def zNewDate = new Date().plus(30)
+    message.setProperty("New_Date",zNewDate);
+    return message;
+}
