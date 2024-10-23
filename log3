@@ -1,0 +1,22 @@
+import com.sap.gateway.ip.core.customdev.util.Message;
+import java.util.HashMap;
+ 
+def Message processData(Message message) {
+    def body = message.getBody(java.lang.String) as String
+    def map = message.getProperties()
+    //Get the StepId of the execution
+    def mpl = message.getProperty('SAP_MessageProcessingLog')
+    Set mplKeys = mpl.getContainedKeys()
+    def stepId = mpl.get(mplKeys.find { it.getName() == 'StepId' })
+    //GetAttachmentName Property. If this is not set (NULL), then set AttachmentName to StepId
+    String attachmentName = (map?.get("attachmentName")?:stepId)
+    //Get Property logPayload. If NULL, set to false
+    String logPayload =(map?.get("logPayload")?:'false')
+    def messageLog = messageLogFactory.getMessageLog(message)
+    if(messageLog != null){
+        if(logPayload.equalsIgnoreCase("true")){
+            messageLog.addAttachmentAsString(attachmentName, body, "text/plain")
+        }
+     }
+    return message;
+}
