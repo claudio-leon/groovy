@@ -1,0 +1,5 @@
+ public static void change(String input) {
+    def root = new XmlParser().parseText(input);
+    root.Line.Field1[0].value = "MyChangedField";
+    System.out.println(XmlUtil.serialize(root));
+  }
