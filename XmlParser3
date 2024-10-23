@@ -1,0 +1,6 @@
+  public static void add(String input) {
+    def root = new XmlParser().parseText(input);
+    root.Line[0].appendNode("Field5", [:], "MyNewField");
+ 
+    System.out.println(XmlUtil.serialize(root));
+  }
