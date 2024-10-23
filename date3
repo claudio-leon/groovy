@@ -1,0 +1,8 @@
+import com.sap.gateway.ip.core.customdev.util.Message;
+import java.util.HashMap;
+import com.sap.it.api.mapping.*;
+def String datePlus30(String header,MappingContext context){
+    Date zcurDate = new Date();
+    Date znewDate = zcurDate + 30;
+    return znewDate.format("yyyyMMdd");
+}
