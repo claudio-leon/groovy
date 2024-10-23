@@ -1,0 +1,6 @@
+def writer = new StringWriter()
+def builder = new MarkupBuilder(writer)
+builder.PurchaseOrder {
+  'Header'{ }
+}
+def output = writer.toString()
