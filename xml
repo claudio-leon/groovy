@@ -1,0 +1,7 @@
+  public void parse(String input) {
+    def root = new XmlSlurper().parseText(input);
+    def field1 = root.Line.Field1.text();
+    def field4 = root.Line.Field4.text();
+    System.out.println("Value of /Records/Line/Field1 = " + field1);
+    System.out.println("Value of /Records/Line/Field4 = " + field4);
+  }
